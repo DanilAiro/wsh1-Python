@@ -30,17 +30,19 @@ def show_marks(name: str, subject: str) -> None:
   }
 
   if name in my_dict:
-    marks = my_dict[name][subject]
+    if subject in my_dict[name]:
+      marks = my_dict[name][subject]
 
-    my_str = input('1 - вывод всех оценок по предмету у ученика\n2 - вывод среднего балла по этому предмету\nВаш выбор: ')
-    
-    if my_str == '1':
-      print(marks)
-    elif my_str == '2':
-      print(sum(marks)/len(marks))
-    else:
-      print('Нет такой команды')
+      my_str = input('1 - вывод всех оценок по предмету у ученика\n2 - вывод среднего балла по этому предмету\nВаш выбор: ')
       
+      if my_str == '1':
+        print(marks)
+      elif my_str == '2':
+        print(sum(marks)/len(marks))
+      else:
+        print('Нет такой команды')
+    else:
+      print('Предмет не найден')
   else:
     print('Студент не найден')
 
